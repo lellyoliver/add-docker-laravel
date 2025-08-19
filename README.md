@@ -36,46 +36,6 @@ cd add-docker-laravel
 
 ### 2) Ajustar volumes no `docker-compose.yml`
 
-Exemplo de configuração (atualize o caminho caso necessário):
-
-```yaml
-services:
-  app:
-    build: ./.docker/php
-    container_name: laravel-app
-    volumes:
-      - ./projeto:/var/www/html
-    depends_on:
-      - mysql
-
-  nginx:
-    image: nginx:alpine
-    container_name: laravel-nginx
-    ports:
-      - "8000:80"
-    volumes:
-      - ./projeto:/var/www/html
-      - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - app
-
-  mysql:
-    image: mysql:8
-    container_name: laravel-mysql
-    environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: laravel
-      MYSQL_PASSWORD: laravel
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-
-volumes:
-  mysql_data:
-```
-
 ---
 
 ### 3) Instalar o Laravel (se ainda não existir na pasta `projeto`)

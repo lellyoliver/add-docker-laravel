@@ -1,0 +1,8 @@
+## Criar tabela dentro do docker
+
+docker exec -it laravel-app bash
+php artisan make:migration create_nome_da_tabela_table
+
+Ver a documentação
+
+php artisan migrate para criar
